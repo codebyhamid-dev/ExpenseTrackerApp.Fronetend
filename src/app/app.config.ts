@@ -1,9 +1,20 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync()]
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    importProvidersFrom(
+      ToastrModule.forRoot({
+        positionClass: 'toast-top-right',
+        timeOut: 3000,
+        preventDuplicates: true,
+        closeButton: true,
+      })
+    ),
+  ],
 };
