@@ -50,15 +50,23 @@ export class LoginComponent {
     const dto = this.loginForm.getRawValue() as LoginDto;
 
     this.authService.login(dto).subscribe({
-      next: () => {
+      next: (res) => {
         this.loading = false;
+        // Store tokens if present
+        if (res?.refreshToken) {
+          localStorage.setItem('refreshToken', res.refreshToken);
+        }
+
         alert('Login successful!');
+        // Redirect to dashboard after successful login
         this.router.navigate(['/dashboard']);
       },
+
       error: (err) => {
         this.loading = false;
-        console.log(err);
-        alert('Login failed');
+
+        console.error(err);
+        alert(err?.error?.message || 'Login failed, please try again.');
       },
     });
   }

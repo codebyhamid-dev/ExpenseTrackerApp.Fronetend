@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +34,11 @@ export class RegisterComponent {
   hidePassword = true;
   hideConfirmPassword = true;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   registerForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -55,6 +59,8 @@ export class RegisterComponent {
       next: () => {
         this.loading = false;
         alert('Registration successful!');
+        // Navigate to login page after successful registration
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.loading = false;
