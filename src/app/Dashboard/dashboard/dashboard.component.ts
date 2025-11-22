@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class DashboardComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
-  logout() {
+  OnLogout() {
     const refreshToken = localStorage.getItem('refreshToken');
 
     if (!refreshToken) {

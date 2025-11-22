@@ -1,10 +1,12 @@
 .dashboard-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* pushes items to edges */
   align-items: center;
+  gap: 10px;
   padding: 15px;
 }
 
-button {
-  font-weight: 600;
+.dashboard-header .submit-btn {
+  width: auto;  /* prevent stretching */
+  flex: none;   /* prevent flex growth */
 }

@@ -43,7 +43,7 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-  submit() {
+  OnSubmit() {
     if (this.loginForm.invalid) return;
 
     this.loading = true;

@@ -48,7 +48,7 @@ export class RegisterComponent {
     confirmPassword: ['', [Validators.required]],
   });
 
-  submit() {
+  OnSubmit() {
     if (this.registerForm.invalid) return;
 
     this.loading = true;
