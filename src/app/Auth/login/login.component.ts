@@ -52,12 +52,13 @@ export class LoginComponent {
     this.authService.login(dto).subscribe({
       next: (res) => {
         this.loading = false;
-        // Store tokens if present
+        // Store refresh token and its expiry
         if (res?.refreshToken) {
           localStorage.setItem('refreshToken', res.refreshToken);
+          localStorage.setItem('refreshTokenExpiry', res.refreshTokenExpiry);
         }
 
-        alert('Login successful!');
+        alert('User Login successfully!');
         // Redirect to dashboard after successful login
         this.router.navigate(['/dashboard']);
       },
