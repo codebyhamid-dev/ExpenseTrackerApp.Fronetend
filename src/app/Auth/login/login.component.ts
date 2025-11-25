@@ -52,14 +52,18 @@ export class LoginComponent {
     this.authService.login(dto).subscribe({
       next: (res) => {
         this.loading = false;
-        // Store refresh token and its expiry
-        if (res?.refreshToken) {
-          localStorage.setItem('refreshToken', res.refreshToken);
-          localStorage.setItem('refreshTokenExpiry', res.refreshTokenExpiry);
-        }
+        // Save tokens
+        localStorage.setItem('refreshToken', res.refreshToken);
+        localStorage.setItem('refreshTokenExpiry', res.refreshTokenExpiry);
 
-        alert('User Login successfully!');
-        // Redirect to dashboard after successful login
+        // Save user info
+        const user = res.user;
+        localStorage.setItem('userId', user.id);
+        localStorage.setItem('Name', user.name);
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('userName', user.username);
+
+        alert('User logged in successfully!');
         this.router.navigate(['/dashboard']);
       },
 

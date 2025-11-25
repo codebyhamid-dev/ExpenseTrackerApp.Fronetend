@@ -1,12 +1,16 @@
-<div class="dashboard-header">
-  <h2>Expense Tracker App</h2>
+<mat-toolbar color="primary" class="dashboard-toolbar">
+  <!-- Left: App Title -->
+  <span class="app-title">Expense Tracker</span>
 
-  <button
-    mat-raised-button
-    color="primary"
-    class="submit-btn"
-    (click)="OnLogout()"
-  >
-    Logout
-  </button>
-</div>
+  <!-- Spacer pushes content to right -->
+  <span class="spacer"></span>
+
+  <!-- Right: User info + Logout -->
+  <div class="user-info">
+    <mat-icon>account_circle</mat-icon>
+    <span *ngIf="userName" class="user-name">{{ userName }}</span>
+    <button mat-raised-button color="accent" (click)="OnLogout()">
+      Logout
+    </button>
+  </div>
+</mat-toolbar>

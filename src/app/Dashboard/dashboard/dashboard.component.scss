@@ -1,12 +1,64 @@
-.dashboard-header {
+.dashboard-toolbar {
   display: flex;
-  justify-content: space-between; /* pushes items to edges */
+  flex-wrap: wrap;
+  padding: 0 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  min-height: 64px;
   align-items: center;
-  gap: 10px;
-  padding: 15px;
 }
 
-.dashboard-header .submit-btn {
-  width: auto;  /* prevent stretching */
-  flex: none;   /* prevent flex growth */
+.app-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.spacer {
+  flex: 1 1 auto; /* pushes right section to the edge */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 600px) {
+  .dashboard-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+    min-height: auto;
+  }
+
+  .spacer {
+    display: none; /* remove spacer in column layout */
+  }
+
+  .user-info {
+    margin-top: 8px;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .user-name {
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+  }
+
+  .app-title {
+    font-size: 1.3rem;
+  }
 }
